@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int t=1;
+    cin>>t;
+    while(t--){
+        int n,u,d;
+        //n=no. of rows.  u=uphill   d=downhill.
+        cin>>n>>u>>d;
+        int arr[n];
+        //enter the height of the hills from 1 to n;
+        for(int i=0;i<n;i++){
+            cin>>arr[i];
+        }
+        int hills=1;//hills ==1 because the chef is already at the starting position.
+        int help=1;
+        for(int i=1;i<n;i++){
+            if(arr[i]>arr[i-1]){
+                if(arr[i]-arr[i-1]<=u)
+                    hills++;
+                else
+                    break;
+            } else if(arr[i]<arr[i-1]){
+                if(arr[i-1]-arr[i]<=d)
+                    hills++;
+                else{
+                    if(help==1){
+                        help--;
+                        hills++;
+                    } else{
+                        break;
+                    }
+                }
+            } else{       //this is for the condition if all the hills is of the same height.
+                hills++;
+            }
+        }
+        cout<<hills<<endl;
+    }
+    return 0;
+}
