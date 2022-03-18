@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    //method in c++ to sort all the elements of the array.
+    sort(arr,arr + n);
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j<i;j++){
+    //         if(arr[i]<arr[j]){
+    //             int temp=arr[i];
+    //             arr[i]=arr[j];
+    //             arr[j]=temp;
+    //         }
+    //     }
+    // }
+    
+    // for(int i=0;i<n;i++){
+    //     cout<<arr[i]<<" ";
+    // }
+    
+    int great=arr[n - 1];
+    int secgreat=0;
+    for(int i=n-2;i>=0;i--){
+        // if(arr[i]!=great){
+        //     secgreat=arr[i];
+        //     break;
+        // }
+        secgreat = arr[i];
+        //this is to check whether the greatest no. is repeating or not in the last part of the array.
+        if (secgreat < great)
+        {
+            break;
+        }
+    }
+    cout<<secgreat%great<<endl;
+    return 0;
+}
